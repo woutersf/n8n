@@ -113,16 +113,16 @@ export class WorkflowRunnerProcess {
 		// Credentials should now be loaded from database.
 		// We check if any node uses credentials. If it does, then
 		// init database.
-		let shouldInitializaDb = false;
+		let shouldInitializeDb = false;
 		inputData.workflowData.nodes.map(node => {
 			if (Object.keys(node.credentials === undefined ? {} : node.credentials).length > 0) {
-				shouldInitializaDb = true;
+				shouldInitializeDb = true;
 			}
 		});
 
 		// This code has been split into 4 ifs just to make it easier to understand
 		// Can be made smaller but in the end it will make it impossible to read.
-		if (shouldInitializaDb) {
+		if (shouldInitializeDb) {
 			// initialize db as we need to load credentials
 			await Db.init();
 		} else if (inputData.workflowData.settings !== undefined && inputData.workflowData.settings.saveExecutionProgress === true) {
