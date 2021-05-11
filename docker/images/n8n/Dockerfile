@@ -23,6 +23,8 @@ RUN apk --no-cache add --virtual fonts msttcorefonts-installer fontconfig && \
 	apk del fonts && \
 	find  /usr/share/fonts/truetype/msttcorefonts/ -type l -exec unlink {} \;
 
+RUN rm -rf /root /tmp/* /var/cache/apk/* && mkdir /root
+
 ENV NODE_ICU_DATA /usr/local/lib/node_modules/full-icu
 
 WORKDIR /data
